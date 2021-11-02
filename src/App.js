@@ -1,9 +1,13 @@
 import React from "react";
 
+import './styles.css';
+
+import Routes from "./routes/routes";
+
 function App() {
   return (
-    <div>
-      <h1>Filmaria</h1>
+    <div className="app" >
+      <Routes />
     </div>
   );
 };
