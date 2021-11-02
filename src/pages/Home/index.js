@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import { Link } from 'react-router-dom';
 
 import api from '../../services/api';
 
@@ -16,8 +17,18 @@ function Home() {
     }, []);
     
     return (
-        <div>
-            <h1>Página Home</h1>
+        <div className="container" >
+            <div className="movies-list" >
+                {movies.map((movie) => {
+                    return (
+                        <article key={movie.id} >
+                            <strong>{movie.nome}</strong>
+                            <img src={movie.foto} alt={movie.nome} />
+                            <Link to="/" >Acessar</Link>
+                        </article>
+                    );
+                })}
+            </div>
         </div>
     );
 };
