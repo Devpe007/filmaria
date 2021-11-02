@@ -1,9 +1,13 @@
 import React from "react";
+import { Link } from 'react-router-dom';
+
+import './styles.css';
 
 function Header() {
     return (
         <header>
-            <h1>HEADER</h1>
+            <Link className="logo" to="/" >Filmaria</Link>
+            <Link className="favoritos" to="/" >Salvos</Link>
         </header>
     );
 };
