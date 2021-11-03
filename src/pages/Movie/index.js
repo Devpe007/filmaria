@@ -26,11 +26,24 @@ function Movie() {
         };
 
         loadMovie();
-
-        return () => {
-            console.log('componente desmontado');
-        };
     }, [id, history]);
+
+    function saveMovie() {
+        const myList = localStorage.getItem('movies');
+
+        let savedMovies = JSON.parse(myList) || [];
+
+        const hasMovie = savedMovies.some((savedMovie) => savedMovie.id === movie.id);
+
+        if(hasMovie) {
+            alert('Você já possui esse filme em sua lista!.');
+            return;
+        };
+
+        savedMovies.push(movie);
+        localStorage.setItem('movies', JSON.stringify(savedMovies));
+        alert('Filme salvo com sucesso!');
+    };
 
     if(loading) {
         return (
@@ -49,7 +62,7 @@ function Movie() {
             {movie.sinopse}
 
             <div className="buttons" >
-                <button onClick={() => {}} >Salvar</button>
+                <button onClick={saveMovie} >Salvar</button>
                 <button>
                     <a 
                       target="_blank" 
