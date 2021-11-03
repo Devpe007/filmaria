@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
 
+import './styles.css';
+
 function Favorites() {
     const [movies, setMovies] = useState([]);
 
