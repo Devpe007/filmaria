@@ -42,7 +42,23 @@ function Movie() {
 
     return (
         <div className="movie-info" >
-            <h1>Página Detalhes - {id}</h1>
+            <h1>{movie.nome}</h1>
+            <img src={movie.foto} alt={movie.nome} />
+
+            <h3>Sinopse</h3>
+            {movie.sinopse}
+
+            <div className="buttons" >
+                <button onClick={() => {}} >Salvar</button>
+                <button>
+                    <a 
+                      target="_blank" 
+                      href={`https://youtube.com/results?search_query=${movie.nome} Trailer`} rel="noreferrer"
+                    >
+                        Trailer
+                    </a>
+                </button>
+            </div>
         </div>
     );
 };
