@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
 import './styles.css';
 
@@ -7,6 +7,7 @@ import api from '../../services/api';
 
 function Movie() {
     const { id } = useParams();
+    const history = useHistory();
 
     const [movie, setMovie] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -14,13 +15,22 @@ function Movie() {
     useEffect(() => {
         async function loadMovie() {
             const response = await api.get(`/r-api/?api=filmes/${id}`);
+
+            if(response.data.length === 0) {
+                history.replace('/');
+                return;
+            };
             
             setMovie(response.data);
             setLoading(false);
         };
 
         loadMovie();
-    }, [id]);
+
+        return () => {
+            console.log('componente desmontado');
+        };
+    }, [id, history]);
 
     if(loading) {
         return (
