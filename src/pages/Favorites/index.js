@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Link } from 'react-router-dom';
+import { toast } from 'react-toastify';
 
 import './styles.css';
 
@@ -19,6 +20,8 @@ function Favorites() {
 
         setMovies(movieFilter);
         localStorage.setItem('movies', JSON.stringify(movieFilter));
+
+        toast.success('Filme excluido com sucesso!');
     };
 
     return (
